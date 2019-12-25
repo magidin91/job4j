@@ -1,6 +1,17 @@
 package ru.job4j.calculator;
 
+/**
+*Class Класс для математических действий
+*
+*@author m.magidin
+ *
+*/
+
 public class Calculator {
+    /**
+     * Main
+     * @param args
+     */
     public static void main(String[] args) {
         add(1, 1);
         div(4,2);
