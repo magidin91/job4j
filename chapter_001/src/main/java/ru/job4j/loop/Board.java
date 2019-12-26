@@ -5,9 +5,11 @@ public class Board {
         for (int row = 0; row < height; row++) {
             for (int cell = 0; cell < width; cell++) {
                 //печатаем X - width раз.
-               if((row+cell)%2==0) System.out.print("X");
-               else
-                   System.out.print(" ");
+                if ((row + cell) % 2 == 0) {
+                    System.out.print("X");
+                } else {
+                    System.out.print(" ");
+                }
             }
             // добавляем перевод на новую строку.
             System.out.println();

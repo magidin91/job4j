@@ -8,17 +8,17 @@ public class SqAreaTest {
     public void square() {
         int inP = 4;
         int inK = 1;
-        int expected =1;
-        double out = SqArea.square(inP,inK);
-        Assert.assertEquals(expected, out,0.01);
+        int expected = 1;
+        double out = SqArea.square(inP, inK);
+        Assert.assertEquals(expected, out, 0.01);
     }
 
-        @Test
-        public void squareVar2() {
-            int inP = 6;
-            int inK = 2;
-            int expected =2;
-            double out = SqArea.square(inP,inK);
-            Assert.assertEquals(expected, out,0.01);
-        }
+    @Test
+    public void squareVar2() {
+        int inP = 6;
+        int inK = 2;
+        int expected = 2;
+        double out = SqArea.square(inP, inK);
+        Assert.assertEquals(expected, out, 0.01);
+    }
 }
