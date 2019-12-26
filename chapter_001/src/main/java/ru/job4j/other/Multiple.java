@@ -1,5 +1,8 @@
 package ru.job4j.other;
 
+/**
+ * Выводим таблицу умножения для 1
+ */
 public class Multiple {
     public static void main(String[] args) {
         System.out.println("1 * 0 = 0");
