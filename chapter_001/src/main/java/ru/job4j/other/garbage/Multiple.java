@@ -1,4 +1,4 @@
-package ru.job4j.other;
+package ru.job4j.other.garbage;
 
 /**
  * Выводим таблицу умножения для 1

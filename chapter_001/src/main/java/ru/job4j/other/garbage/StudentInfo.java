@@ -1,4 +1,4 @@
-package ru.job4j.other;
+package ru.job4j.other.garbage;
 
 public class StudentInfo {
     public static void main(String[] args) {
