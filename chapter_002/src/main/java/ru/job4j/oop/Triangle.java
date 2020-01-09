@@ -46,7 +46,7 @@ public class Triangle {
         double c = second.distance(third);
         double p = period(a, b, c);
         if (this.exist(a, b, c)) {
-           rsl=Math.sqrt(p * (p - a) * (p - b) * (p - c));
+            rsl = Math.sqrt(p * (p - a) * (p - b) * (p - c));
         }
         System.out.println(rsl);
         return rsl;
@@ -67,10 +67,10 @@ public class Triangle {
     }
 
     public static void main(String[] args) {
-        Point first=new Point(0,0);
-        Point second=new Point(0,2);
-        Point third=new Point(2,0);
-        Triangle triangle1=new Triangle(first,second,third);
+        Point first = new Point(0, 0);
+        Point second = new Point(0, 2);
+        Point third = new Point(2, 0);
+        Triangle triangle1 = new Triangle(first, second, third);
         triangle1.area();
     }
 }

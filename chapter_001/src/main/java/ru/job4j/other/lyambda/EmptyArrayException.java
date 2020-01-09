@@ -4,12 +4,13 @@ class EmptyArrayException extends Exception {
     EmptyArrayException() {
         super("Maccив пуст");
     }
-    static void addZZZ(){
+
+    static void addZZZ() {
         System.out.println("yes");
     }
 
     public static void main(String[] args) {
-        EmptyArrayException a= new EmptyArrayException();
+        EmptyArrayException a = new EmptyArrayException();
 
 
     }

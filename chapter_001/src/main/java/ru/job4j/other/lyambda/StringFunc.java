@@ -13,7 +13,7 @@ class LambdasAsArgumentsDemo {
         return sf.func(s);
     }
 
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         String inStr = "Лямбда-выражения повышают эффективность Java";
         String outStr;
         System.out.println("Этo исходная строка:" + inStr);
@@ -25,9 +25,11 @@ class LambdasAsArgumentsDemo {
         outStr = stringOp((str) -> {
             String result = "";
             int i;
-            for (i = 0; i < str.length(); i++)
-                if (str.charAt(i) != ' ')
+            for (i = 0; i < str.length(); i++) {
+                if (str.charAt(i) != ' ') {
                     result += str.charAt(i);
+                }
+            }
             return result;
         }, inStr);
         System.out.println("Этo строка с удаленными пробелами:" + outStr);
