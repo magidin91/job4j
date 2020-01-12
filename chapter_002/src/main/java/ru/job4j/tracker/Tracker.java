@@ -1,5 +1,6 @@
 package ru.job4j.tracker;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 
@@ -7,12 +8,7 @@ public class Tracker {
     /**
      * Массив для хранения заявок.
      */
-    private final Item[] items = new Item[100];
-
-    /**
-     * Указатель ячейки для новой заявки.
-     */
-    private int position = 0;
+    private final ArrayList<Item> items = new ArrayList<>();
 
     /**
      * Метод добавления заявки в хранилище
@@ -21,14 +17,14 @@ public class Tracker {
      */
     public Item add(Item item) {
         item.setId(this.generateId());
-        items[this.position++] = item;
+        items.add(item);
         return item;
     }
 
     public void replace(String id, Item item) {
         if (indexOf(id) != -1) {
             item.setId(id);
-            items[indexOf(id)] = item;
+            items.set(indexOf(id), item);
         } else {
             System.out.println("String id doesn't exist");
         }
@@ -36,44 +32,35 @@ public class Tracker {
 
     public void delete(String id) {
         if (indexOf(id) != -1) {
-            System.arraycopy(items, indexOf(id) + 1, items, indexOf(id), position - indexOf(id));
-            items[position] = null;
-            position--;
+            items.remove(indexOf(id));
         } else {
             System.out.println("String id doesn't exist");
         }
     }
 
-    public Item[] findAll() {
-        Item[] itemsWithoutNull = new Item[items.length];
-        int size = 0;
-        for (int index = 0; index < items.length; index++) {
-            Item item = items[index];
+    public ArrayList<Item> findAll() {
+        ArrayList<Item> itemsWithoutNull = new ArrayList<>();
+        for (Item item : items) {
             if (item != null) {
-                itemsWithoutNull[size] = item;
-                size++;
+                itemsWithoutNull.add(item);
             }
         }
-        itemsWithoutNull = Arrays.copyOf(itemsWithoutNull, size);
         return itemsWithoutNull;
     }
 
-    public Item[] findByName(String key) {
-        Item[] itemsEqualByName = new Item[items.length];
-        int size = 0;
-        for (int index = 0; index < items.length; index++) {
-            if (items[index].getName().equals(key)) {
-                itemsEqualByName[size] = items[index];
-                size++;
+    public ArrayList<Item> findByName(String key) {
+        ArrayList<Item> itemsEqualByName = new ArrayList<>();
+        for (Item item : items) {
+            if (item.getName().equals(key)) {
+                itemsEqualByName.add(item);
             }
         }
-        itemsEqualByName = Arrays.copyOf(itemsEqualByName, size);
         return itemsEqualByName;
     }
 
     public Item findById(String id) {
         if (indexOf(id) != -1) {
-            return items[indexOf(id)];
+            return items.get(indexOf(id));
         } else {
             System.out.println("String id doesn't exist");
             return null;
@@ -93,8 +80,8 @@ public class Tracker {
 
     private int indexOf(String id) {
         int rsl = -1;
-        for (int index = 0; index < position; index++) {
-            if (items[index].getId().equals(id)) {
+        for (int index = 0; index < items.size(); index++) {
+            if (items.get(index).getId().equals(id)) {
                 rsl = index;
                 break;
             }
