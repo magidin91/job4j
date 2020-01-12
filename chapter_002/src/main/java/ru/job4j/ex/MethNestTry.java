@@ -14,9 +14,9 @@ public class MethNestTry {
 за пределы массива. */
             if (a == 2) {
                 int[] c = {1};
-                c[42] = 99;
+                c[42] = 99; // здесь генерируется исключение
             }
-        } // здесь генерируется исключение}
+        }
         catch (ArrayIndexOutOfBoundsException e) {
             System.out.println("Индeкc за пределами массива: "
                     + e);
