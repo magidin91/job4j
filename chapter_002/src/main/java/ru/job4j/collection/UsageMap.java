@@ -16,7 +16,7 @@ public class UsageMap {
         }
         map.remove("parsentev@yandex.ru");
         for (Map.Entry<String, String> entry : map.entrySet()) { // метод entrySet() вернет коллекцию java.util.Set состоящую из объектов Map.Entry,
-            // у которых есть метод
+            // у которых есть метод getKey(),getValue()
             String key = entry.getKey();
             String value = entry.getValue();
             System.out.println(key + " = " + value);
