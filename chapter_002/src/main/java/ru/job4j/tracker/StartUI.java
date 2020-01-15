@@ -15,7 +15,7 @@ public class StartUI {
         this.output = output;
     }
 
-    public void init( ArrayList<UserAction> actions) {
+    public void init(ArrayList<UserAction> actions) {
         boolean run = true;
         while (run) {
             this.showMenu(actions);
@@ -39,6 +39,6 @@ public class StartUI {
         ArrayList<UserAction> actions = new ArrayList<>(Arrays.asList(new CreateAction(), new FindAllAction(), new ReplaceAction(),
                 new DeleteAction(), new FindItemByIdAction(), new FindItemsByName(), new ExitAction()
         ));
-        new StartUI(validate,tracker,System.out::println).init(actions);
+        new StartUI(validate, tracker, System.out::println).init(actions);
     }
 }
