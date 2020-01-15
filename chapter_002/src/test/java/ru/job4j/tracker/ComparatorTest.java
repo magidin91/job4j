@@ -18,16 +18,17 @@ public class ComparatorTest {
         List<Item> items = Arrays.asList(new Item("b"), new Item("a"), new Item("c"));
         System.out.println(items);
         Collections.sort(items, new ItemComparator());
-        List<Item> expected = Arrays.asList(new Item("a"),new Item("b"), new Item("c"));
+        List<Item> expected = Arrays.asList(new Item("a"), new Item("b"), new Item("c"));
         System.out.println(items);
         assertThat(items, is(expected));
     }
+
     @Test
     public void sortReverse() {
         List<Item> items = Arrays.asList(new Item("b"), new Item("a"), new Item("c"));
         System.out.println(items);
         Collections.sort(items, new ItemReverseComparator());
-        List<Item> expected = Arrays.asList(new Item("c"),new Item("b"), new Item("a"));
+        List<Item> expected = Arrays.asList(new Item("c"), new Item("b"), new Item("a"));
         System.out.println(items);
         assertThat(items, is(expected));
     }
