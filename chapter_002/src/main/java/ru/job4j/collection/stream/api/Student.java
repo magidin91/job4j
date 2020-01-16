@@ -27,4 +27,9 @@ public class Student {
         Student student = (Student) o;
         return Objects.equals(score, student.score);
     }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(score);
+    }
 }
