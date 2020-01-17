@@ -18,24 +18,45 @@ public class BankService {
     }
 
     public User findByPassport(String passport) {
-       return users.keySet().stream().filter(user->user.getPassport().equals(passport)).collect(Collectors.toList()).get(0);
+        try {
+            return users.keySet().stream().filter(user -> user.getPassport().equals(passport)).collect(Collectors.toList()).get(0);
+        }
+        catch (IndexOutOfBoundsException ex){
+            System.out.println("Passport is not found, return null!");
+            return null;
+        }
     }
 
     public Account findByRequisite(String passport, String requisite) {
-        return users.get(findByPassport(passport)).stream().filter(user->user.getRequisite().equals(requisite)).collect(Collectors.toList()).get(0);
+        try {
+            return users.get(findByPassport(passport)).stream().filter(user -> user.getRequisite().equals(requisite)).collect(Collectors.toList()).get(0);
+        }
+        catch (NullPointerException ex){
+            return null;
+        }
+        catch (IndexOutOfBoundsException ex){
+            System.out.println("Requisite is not found, return null!");
+            return null;
+        }
     }
 
     public boolean transferMoney(String srcPassport, String srcRequisite,
                                  String destPassport, String destRequisite, double amount) {
         boolean rsl = false;
-        double srcBalance = findByRequisite(srcPassport, srcRequisite).getBalance();
-        double destBalance = findByRequisite(destPassport, destRequisite).getBalance();
-        Account srcAccount = findByRequisite(srcPassport, srcRequisite);
-        Account destAccount = findByRequisite(destPassport, destRequisite);
-        if (srcAccount != null && destAccount != null && srcBalance >= amount) {
-            srcAccount.setBalance(srcBalance - amount);
-            destAccount.setBalance(destBalance + amount);
-            rsl = true;
+        try {
+            double srcBalance = findByRequisite(srcPassport, srcRequisite).getBalance();
+            double destBalance = findByRequisite(destPassport, destRequisite).getBalance();
+            Account srcAccount = findByRequisite(srcPassport, srcRequisite);
+            Account destAccount = findByRequisite(destPassport, destRequisite);
+            if (srcBalance >= amount) {
+                srcAccount.setBalance(srcBalance - amount);
+                destAccount.setBalance(destBalance + amount);
+                rsl = true;
+            }
+        }
+        catch (NullPointerException ex){
+            System.out.println("Operation was cancelled");
+            return false;
         }
         return rsl;
     }
