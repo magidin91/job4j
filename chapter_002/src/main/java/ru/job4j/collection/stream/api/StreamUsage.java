@@ -25,8 +25,8 @@ public class StreamUsage {
     public static void main(String[] args) {
         List<Task> tasks = List.of(
                 new Task("Bug #1", 100),
-                new Task("Task #2", 100),
-                new Task("Bug #3", 100)
+                new Task("Task #2", 80),
+                new Task("Bug #3", 50)
         );
 
 //Фильтрация
@@ -43,7 +43,7 @@ public class StreamUsage {
 //Упрощение
         long total = tasks.stream().map(
                 task -> task.spent
-        ).reduce(0L, Long::sum);
+        ).reduce(70L, Long::min);
 
     }
 }
