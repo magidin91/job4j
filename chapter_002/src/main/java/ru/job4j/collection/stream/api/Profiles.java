@@ -6,15 +6,6 @@ import java.util.stream.Collectors;
 
 public class Profiles {
     List<Address> collect(List<Profile> profiles) {
-        List<Address> all = profiles.stream().map(Profile::getAddress).collect(Collectors.toList());
-        //Для этого чтобы обеспечить уникальность элементов,// используем метод Stream#distinct();
-        List<Address> unique = all.stream().distinct().sorted(new Comparator<Address>() {
-            @Override
-            public int compare(Address o1, Address o2) {
-                return o1.getCity().compareTo(o2.getCity());
-            }
-        }).collect(Collectors.toList());
-
-        return  unique;
+        return profiles.stream().map(Profile::getAddress).distinct().sorted((o1, o2) -> o1.getCity().compareTo(o2.getCity())).collect(Collectors.toList());
     }
 }
