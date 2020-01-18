@@ -18,7 +18,7 @@ public class JobSorterTest {
                 new Job("Impl task", 2),
                 new Job("Reboot server", 1)
         );
-        List<Job> expected = Arrays.asList(
+        List<Job> expected =List.of(
                 new Job("Reboot server", 1),
                 new Job("Impl task", 2),
                 new Job("Fix bugs", 4)
@@ -34,7 +34,7 @@ public class JobSorterTest {
                 new Job("Impl task", 2),
                 new Job("Reboot server", 1)
         );
-        List<Job> expected = Arrays.asList(
+        List<Job> expected = List.of(
                 new Job("Reboot server", 1),
                 new Job("Impl task", 2),
                 new Job("Fix bugs", 4)
@@ -51,7 +51,7 @@ public class JobSorterTest {
                 new Job("Reboot server", 1),
                 new Job("Fix bugs", 5)
         );
-        List<Job> expected = Arrays.asList(
+        List<Job> expected = List.of(
                 new Job("Reboot server", 1),
                 new Job("Impl task", 2),
                 new Job("Fix bugs", 5),
