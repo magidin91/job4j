@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 public class BankService {
     private Map<User, List<Account>> users = new HashMap<>();
@@ -14,26 +13,20 @@ public class BankService {
     }
 
     public void addAccount(String passport, Account account) {
-        if (findByPassport(passport) != null) {
-            users.get(findByPassport(passport)).add(account);
+        User key = findByPassport(passport);
+        if (key != null) {
+            users.get(key).add(account);
         }
     }
 
     public User findByPassport(String passport) {
-        List<User> findUser = users.keySet().stream().filter(user -> user.getPassport().equals(passport)).collect(Collectors.toList());
-        if (findUser.size() != 0) {
-            return findUser.get(0);
-        }
-        return null;
+        return users.keySet().stream().filter(user -> user.getPassport().equals(passport)).findFirst().orElse(null);
     }
 
     public Account findByRequisite(String passport, String requisite) {
-        if (findByPassport(passport) != null) {
-            List<Account> findAccount = users.get(findByPassport(passport)).stream().
-                    filter(user -> user.getRequisite().equals(requisite)).collect(Collectors.toList());
-            if (findAccount.size() != 0) {
-                return findAccount.get(0);
-            }
+        User key = findByPassport(passport);
+        if (key != null) {
+            return users.get(key).stream().filter(account -> account.getRequisite().equals(requisite)).findFirst().orElse(null);
         }
         return null;
     }
@@ -53,5 +46,15 @@ public class BankService {
             }
         }
         return rsl;
+    }
+
+    public static void main(String[] args) {
+        BankService bank = new BankService();
+        bank.addUser(new User("111", "a"));
+        //System.out.println(bank.findByPassport("111"));
+        // System.out.println(bank.findByPassport("112"));
+        bank.addAccount("111", new Account("5555", 100d));
+        //System.out.println(bank.findByRequisite("111","5554"));
+        System.out.println(bank.transferMoney("111", "5555", "111", "5555", 100));
     }
 }
