@@ -17,11 +17,9 @@ public class IteratorOfIterators {
             @Override
             public boolean hasNext() {
                 boolean rsl = false;
-
-                if (it.hasNext() && !inIterator.hasNext()) {
+                while (it.hasNext() && !inIterator.hasNext()) { //если есть, устанавливаем внешний непустой итератор
                     inIterator = it.next();
                 }
-
                 if (inIterator != null) { //проверяем случай, когда нет ни одного Iterator<Integer>
                     rsl = inIterator.hasNext();
                 }
@@ -30,12 +28,8 @@ public class IteratorOfIterators {
 
             @Override
             public Integer next() {
-                if (inIterator == null) {
+                if (!hasNext()) { //вызов hasNext сам сдвигает внешний итератор, если внутренние закончились
                     throw new NoSuchElementException();
-                }
-
-                if (!inIterator.hasNext()) {
-                    inIterator = it.next();
                 }
                 return inIterator.next();
             }
