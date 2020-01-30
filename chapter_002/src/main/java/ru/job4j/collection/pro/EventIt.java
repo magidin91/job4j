@@ -31,10 +31,10 @@ public class EventIt implements Iterator<Integer> {
 
     @Override
     public Integer next() {
-        whileCondition();
-        if (index == values.length) {
+        if (!hasNext()) {
             throw new NoSuchElementException();
         }
+        whileCondition();
         return values[index++];
     }
 }
