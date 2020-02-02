@@ -18,19 +18,19 @@ public class SimpleArray<T> implements Iterable<T> {
     }
 
     public void set(int index, T model) {
-        if (index >= vals.length) {
+        if (index >= vals.length || index < 0) {
             System.out.println("ВЫ ввели неверный индекс");
             return;
         }
         vals[index] = model;
     }
 
-    public Object get(int index) throws ArrayIndexOutOfBoundsException {
-        return index < vals.length ? vals[index] : null;
+    public T get(int index) {
+        return (T) (index < vals.length && index >= 0 ? vals[index] : null);
     }
 
     public void remove(int index) {
-        if (index >= vals.length) {
+        if (index >= vals.length || index < 0) {
             System.out.println("ВЫ ввели неверный индекс");
             return;
         }
