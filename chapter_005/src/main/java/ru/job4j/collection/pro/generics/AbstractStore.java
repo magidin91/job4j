@@ -1,5 +1,7 @@
 package ru.job4j.collection.pro.generics;
 
+import java.util.NoSuchElementException;
+
 public abstract class AbstractStore<T extends Base> implements Store<T> {
     private final SimpleArray<T> simpleArray;
 
@@ -33,8 +35,12 @@ public abstract class AbstractStore<T extends Base> implements Store<T> {
     }
 
     @Override
-    public T findById(String id) {
-        return simpleArray.get(getId(id));
+    public T findById(String id) throws NoSuchElementException {
+        int index = getId(id);
+        if (index == -1) {
+            throw new NoSuchElementException(" Element by id: " + id + " not found");
+        }
+        return simpleArray.get(index);
     }
 
     public int getId(String id) {
