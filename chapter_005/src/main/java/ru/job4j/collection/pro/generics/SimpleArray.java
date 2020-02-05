@@ -2,8 +2,8 @@ package ru.job4j.collection.pro.generics;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Arrays;
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 public class SimpleArray<T> implements Iterable<T> {
     private Object[] vals;
@@ -17,22 +17,23 @@ public class SimpleArray<T> implements Iterable<T> {
         vals[ind++] = model;
     }
 
-    public void set(int index, T model) {
+    public void set(int index, T model) throws ArrayIndexOutOfBoundsException {
         if (index >= vals.length || index < 0) {
-            System.out.println("ВЫ ввели неверный индекс");
-            return;
+            throw new ArrayIndexOutOfBoundsException("ВЫ ввели неверный индекс");
         }
         vals[index] = model;
     }
 
-    public T get(int index) {
-        return (T) (index < vals.length && index >= 0 ? vals[index] : null);
+    public T get(int index) throws ArrayIndexOutOfBoundsException {
+        if (index >= vals.length || index < 0) {
+            throw new ArrayIndexOutOfBoundsException("ВЫ ввели неверный индекс");
+        }
+        return (T) vals[index];
     }
 
-    public void remove(int index) {
+    public void remove(int index) throws ArrayIndexOutOfBoundsException {
         if (index >= vals.length || index < 0) {
-            System.out.println("ВЫ ввели неверный индекс");
-            return;
+            throw new ArrayIndexOutOfBoundsException("ВЫ ввели неверный индекс");
         }
         if (index != vals.length - 1) {
             System.arraycopy(vals, index + 1, vals, index, vals.length - index - 1);
@@ -44,7 +45,22 @@ public class SimpleArray<T> implements Iterable<T> {
     @NotNull
     @Override
     public Iterator<T> iterator() {
-        return (Iterator<T>) Arrays.asList(this.vals).iterator();
+        return new Iterator<T>() {
+            private int index = 0;
+
+            @Override
+            public boolean hasNext() {
+                return index < vals.length;
+            }
+
+            @Override
+            public T next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                return (T) vals[index++];
+            }
+        };
     }
 }
 
