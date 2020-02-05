@@ -6,6 +6,7 @@ import java.util.NoSuchElementException;
 public class EventIt implements Iterator<Integer> {
     private final int[] values;
     private int index = 0;
+    private int evenIndex;
 
     public EventIt(int[] values) {
         this.values = values;
@@ -23,6 +24,7 @@ public class EventIt implements Iterator<Integer> {
         int startIndex = index;
         whileCondition();
         if (index < values.length) {
+            evenIndex = index;
             rsl = true;
         }
         index = startIndex;
@@ -34,7 +36,7 @@ public class EventIt implements Iterator<Integer> {
         if (!hasNext()) {
             throw new NoSuchElementException();
         }
-        whileCondition();
-        return values[index++];
+        index = evenIndex + 1;
+        return values[evenIndex];
     }
 }
