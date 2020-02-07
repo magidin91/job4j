@@ -18,21 +18,21 @@ public class SimpleArray<T> implements Iterable<T> {
     }
 
     public void set(int index, T model) throws ArrayIndexOutOfBoundsException {
-        if (index >= vals.length || index < 0) {
+        if (index >= ind || index < 0) {
             throw new ArrayIndexOutOfBoundsException("ВЫ ввели неверный индекс");
         }
         vals[index] = model;
     }
 
     public T get(int index) throws ArrayIndexOutOfBoundsException {
-        if (index >= vals.length || index < 0) {
+        if (index >= ind || index < 0) {
             throw new ArrayIndexOutOfBoundsException("ВЫ ввели неверный индекс");
         }
         return (T) vals[index];
     }
 
     public void remove(int index) throws ArrayIndexOutOfBoundsException {
-        if (index >= vals.length || index < 0) {
+        if (index >= ind || index < 0) {
             throw new ArrayIndexOutOfBoundsException("ВЫ ввели неверный индекс");
         }
         if (index != vals.length - 1) {

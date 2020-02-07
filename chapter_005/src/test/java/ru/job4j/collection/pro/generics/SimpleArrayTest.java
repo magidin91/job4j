@@ -10,14 +10,14 @@ import static org.junit.Assert.*;
 
 public class SimpleArrayTest {
 
-    @Test
+    @Test(expected = ArrayIndexOutOfBoundsException.class)
     public void remove() {
         SimpleArray<Integer> array = new SimpleArray<>(10);
         array.add(1);
         array.add(2);
         array.add(3);
         array.remove(2);
-        assertNull(array.get(2));
+        array.get(2);
     }
 
     @Test
@@ -66,12 +66,12 @@ public class SimpleArrayTest {
         simpleArray.set(5, "ss");
     }
 
-    @Test
+    @Test(expected = ArrayIndexOutOfBoundsException.class)
     public void whenAddARemoveOne() {
         SimpleArray<String> simpleArray = new SimpleArray<>(2);
         simpleArray.add("ss");
         simpleArray.remove(0);
-        assertNull(simpleArray.get(0));
+        simpleArray.get(0);
     }
 
     @Test
