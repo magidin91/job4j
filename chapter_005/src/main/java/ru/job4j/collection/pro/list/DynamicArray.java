@@ -5,6 +5,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.Objects;
 
 public class DynamicArray<E> implements Iterable<E> {
     private Object[] vals = new Object[10];
@@ -21,7 +22,11 @@ public class DynamicArray<E> implements Iterable<E> {
         modCount++;
     }
 
-    E get(int index) throws ArrayIndexOutOfBoundsException {
+    /**
+     * @throws IndexOutOfBoundsException if the {@code index} is out of bounds
+     */
+    E get(int index)  {
+        Objects.checkIndex(index, ind);
         return (E) vals[index];
     }
 
