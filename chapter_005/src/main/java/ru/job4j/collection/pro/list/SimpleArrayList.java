@@ -33,11 +33,11 @@ public class SimpleArrayList<E> implements Iterable<E> {
         if (size == 0) {
             throw new NoSuchElementException();
         }
-        E deleted = this.first.data;
+        Node<E> deleted = this.first;
         this.first = first.next;
+        deleted.next = null;
         this.size--;
-        modCount++;
-        return deleted;
+        return deleted.data;
     }
 
     /**
