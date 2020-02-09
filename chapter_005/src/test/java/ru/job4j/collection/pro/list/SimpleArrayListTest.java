@@ -3,10 +3,12 @@ package ru.job4j.collection.pro.list;
 import org.junit.Test;
 import org.junit.Before;
 
+import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 
 public class SimpleArrayListTest {
 
@@ -46,5 +48,22 @@ public class SimpleArrayListTest {
     public void whenSize0DeleteFirst() {
         list = new SimpleArrayList<>();
         list.delete();
+    }
+
+    @Test
+    public void next3Times() {
+        Iterator<Integer> it = list.iterator();
+        it.next();
+        it.next();
+        assertThat(it.next(), is(1));
+    }
+
+    @Test
+    public void hasNext() {
+        Iterator<Integer> it = list.iterator();
+        it.hasNext();
+        it.next();
+        it.next();
+        assertTrue(it.hasNext());
     }
 }

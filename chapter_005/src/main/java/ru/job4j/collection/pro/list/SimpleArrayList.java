@@ -1,14 +1,19 @@
 package ru.job4j.collection.pro.list;
 
+import org.jetbrains.annotations.NotNull;
+
+import java.util.ConcurrentModificationException;
+import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 /**
  * Класс SimpleArrayList.
  */
-public class SimpleArrayList<E> {
+public class SimpleArrayList<E> implements Iterable<E> {
 
     private int size;
     private Node<E> first;
+    private int modCount = 0;
 
     /**
      * Метод вставляет в начало списка данные.
@@ -18,6 +23,7 @@ public class SimpleArrayList<E> {
         newLink.next = this.first;
         this.first = newLink;
         this.size++;
+        modCount++;
     }
 
     /**
@@ -30,6 +36,7 @@ public class SimpleArrayList<E> {
         E deleted = this.first.data;
         this.first = first.next;
         this.size--;
+        modCount++;
         return deleted;
     }
 
@@ -49,6 +56,38 @@ public class SimpleArrayList<E> {
      */
     public int getSize() {
         return this.size;
+    }
+
+    @NotNull
+    @Override
+    public Iterator<E> iterator() {
+        return new Iterator<E>() {
+            private int cursor;
+            private int expectedModCount = modCount;
+            private Node<E> next = first;
+            private Node<E> lastReturned;
+
+            @Override
+            public boolean hasNext() {
+                return cursor != SimpleArrayList.this.size;
+            }
+
+            @Override
+            public E next() {
+                checkForComodification();
+                if (!hasNext())
+                    throw new NoSuchElementException();
+                lastReturned = next;
+                next = next.next;
+                cursor++;
+                return lastReturned.data;
+            }
+
+            final void checkForComodification() {
+                if (modCount != expectedModCount)
+                    throw new ConcurrentModificationException();
+            }
+        };
     }
 
     /**
