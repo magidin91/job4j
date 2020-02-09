@@ -75,8 +75,9 @@ public class SimpleArrayList<E> implements Iterable<E> {
             @Override
             public E next() {
                 checkForComodification();
-                if (!hasNext())
+                if (!hasNext()) {
                     throw new NoSuchElementException();
+                }
                 lastReturned = next;
                 next = next.next;
                 cursor++;
@@ -84,8 +85,9 @@ public class SimpleArrayList<E> implements Iterable<E> {
             }
 
             final void checkForComodification() {
-                if (modCount != expectedModCount)
+                if (modCount != expectedModCount) {
                     throw new ConcurrentModificationException();
+                }
             }
         };
     }
@@ -94,7 +96,6 @@ public class SimpleArrayList<E> implements Iterable<E> {
      * Класс предназначен для хранения данных.
      */
     private static class Node<E> {
-
         E data;
         Node<E> next;
 
