@@ -15,4 +15,7 @@ public class SimpleStack<T> {
     public T poll() {
         return simpleArrayList.delete();
     }
+    public int getSize() {
+        return simpleArrayList.getSize();
+    }
 }
