@@ -20,12 +20,12 @@ public class SimpleQueue<T> {
      * Помещает элементы из стека в обратном порядке и удаляет первый добавленный элемент (FIFO)
      */
     public T poll() {
-        if (queue.getSize()==0) {
+        if (queue.getSize() == 0) {
             int size = stack.getSize();
             for (int i = 0; i < size; i++) {
                 queue.push((stack.poll()));
             }
         }
-       return queue.poll();
+        return queue.poll();
     }
 }

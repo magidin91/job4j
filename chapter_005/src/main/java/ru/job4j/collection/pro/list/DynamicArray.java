@@ -25,7 +25,7 @@ public class DynamicArray<E> implements Iterable<E> {
     /**
      * @throws IndexOutOfBoundsException if the {@code index} is out of bounds
      */
-    E get(int index)  {
+    E get(int index) {
         Objects.checkIndex(index, ind);
         return (E) vals[index];
     }
@@ -52,8 +52,9 @@ public class DynamicArray<E> implements Iterable<E> {
             }
 
             final void checkForComodification() {
-                if (modCount != expectedModCount)
+                if (modCount != expectedModCount) {
                     throw new ConcurrentModificationException();
+                }
             }
         };
     }
