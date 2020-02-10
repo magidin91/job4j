@@ -34,20 +34,20 @@ public class DynamicArrayTest {
         assertThat(array.get(10), is(11));
     }
 
-    @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void GetArrayIndexOutOfBoundsException() {
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void getArrayIndexOutOfBoundsException() {
         array.get(100);
     }
 
     @Test(expected = ConcurrentModificationException.class)
-    public void IteratorModificationException() {
+    public void iteratorModificationException() {
         Iterator<Integer> it = array.iterator();
         array.add(11);
         it.next();
     }
 
     @Test(expected = NoSuchElementException.class)
-    public void NextNoSuchElementException() {
+    public void nextNoSuchElementException() {
         Iterator<Integer> it = array.iterator();
         for (int i = 0; i != 11; i++) {
             it.next();

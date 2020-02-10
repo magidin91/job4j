@@ -52,8 +52,9 @@ public class DynamicArray<E> implements Iterable<E> {
             }
 
             final void checkForComodification() {
-                if (modCount != expectedModCount)
+                if (modCount != expectedModCount) {
                     throw new ConcurrentModificationException();
+                }
             }
         };
     }
