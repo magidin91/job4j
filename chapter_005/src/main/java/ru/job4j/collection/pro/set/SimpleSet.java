@@ -10,11 +10,7 @@ import java.util.Iterator;
  */
 
 public class SimpleSet<E> implements Iterable<E> {
-    private final DynamicArray<E> dynamicArray;
-
-    public SimpleSet() {
-        this.dynamicArray = new DynamicArray<>();
-    }
+    private final DynamicArray<E> dynamicArray = new DynamicArray<>();
 
     /**
      * Метод добавляет элемент, если он осутствует в массиве-контейнере
