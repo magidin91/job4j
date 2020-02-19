@@ -13,18 +13,12 @@ class Tree<E extends Comparable<E>> implements SimpleTree<E> {
     @Override
     public boolean add(E parent, E child) {
         boolean rsl = false;
-        Optional<Node<E>> optionalParent = findBy(parent);
-        if (optionalParent.isPresent()) {
-            List<Node<E>> children = optionalParent.get().children;
-            for (Node<E> node : children) {
-                if (child == null && node.value == null || child != null && child.equals(node.value)) {
-                    return rsl;
-                }
-            }
-            Node<E> nodeChild = new Node<>(child);
-            children.add(nodeChild);
-            rsl = true;
+        Optional<Node<E>> optionalParent;
+        if (findBy(child).isPresent() || (optionalParent = findBy(parent)).isEmpty()) {
+            return rsl;
         }
+        optionalParent.get().children.add(new Node<>(child));
+        rsl = true;
         return rsl;
     }
 
