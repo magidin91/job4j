@@ -29,15 +29,6 @@ public class TreeTest {
     }
 
     @Test
-    public void whenAddSecondNull() {
-        Tree<Integer> tree = new Tree<>(1);
-        tree.add(1, null);
-        tree.add(1, 1);
-        assertFalse(
-                tree.add(1, null));
-    }
-
-    @Test
     public void whenAddTrue() {
         Tree<Integer> tree = new Tree<>(1);
         tree.add(1, 2);
