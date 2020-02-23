@@ -11,7 +11,7 @@ public class SimpleHashMap<K, V> implements Iterable<SimpleHashMap.Node<K, V>> {
     private Node<K, V>[] tab;
     private int size;
     private int n; //длина массива
-    private final float LOAD_FACTOR = 0.75f;
+    private static final float LOAD_FACTOR = 0.75f;
     private int modCount;
     /**
      * Количество элементов, при котором удваиваем длину массива
@@ -94,8 +94,14 @@ public class SimpleHashMap<K, V> implements Iterable<SimpleHashMap.Node<K, V>> {
     }
 
     static final int hash(Object key) {
-        int h;
-        return (key == null) ? 0 : (h = key.hashCode()) ^ (h >>> 16);
+        int rsl;
+        if (key == null) {
+            rsl = 0;
+        } else {
+            int h = key.hashCode();
+            rsl = h ^ (h >>> 16);
+        }
+        return rsl;
     }
 
     @NotNull
