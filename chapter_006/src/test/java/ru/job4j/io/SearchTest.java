@@ -45,7 +45,7 @@ public class SearchTest {
 
     @Ignore
     @Test
-    public void searchTxt() throws IOException {
+    public void searchTxt() {
         List<String> exts = new ArrayList<>();
         exts.add("txt");
         List<File> files = List.of(file1, file2, file3, file5);
@@ -54,7 +54,7 @@ public class SearchTest {
 
     @Ignore
     @Test
-    public void searchRtf() throws IOException {
+    public void searchRtf() {
         List<String> exts = new ArrayList<>();
         exts.add("rtf");
         List<File> files = List.of(file4, file6);
@@ -62,7 +62,7 @@ public class SearchTest {
     }
 
     @Test
-    public void searchRtfAndTxt() throws IOException {
+    public void searchRtfAndTxt() {
         List<String> exts = new ArrayList<>();
         exts.add("rtf");
         exts.add("txt");
