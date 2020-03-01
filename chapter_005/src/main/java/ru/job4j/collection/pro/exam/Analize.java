@@ -3,29 +3,28 @@ package ru.job4j.collection.pro.exam;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Analize {
 
     public Info diff(@NotNull List<User> previous, @NotNull List<User> current) {
         int changed = 0;
-        int common = 0;
+        int deleted = 0;
+        Map<Integer, String> curr = current.stream().collect(Collectors.toMap(user -> user.id, user -> user.name));
         for (User prevUser : previous) {
-            for (User currUser : current) {
-                if (prevUser.id == currUser.id) {
-                    if (prevUser.name.equals(currUser.name)) {
-                        common++;
-                    } else {
-                        changed++;
-                    }
-                }
+            String value = curr.get(prevUser.id);
+            if (value == null) {
+                deleted++;
+            } else if (!value.equals(prevUser.name)) {
+                changed++;
             }
         }
-        int deleted = previous.size() - common - changed;
         int added = current.size() - previous.size() + deleted;
         return createInfo(added, changed, deleted);
     }
 
-    public Info createInfo(int added, int changed, int deleted) {
+    private Info createInfo(int added, int changed, int deleted) {
         Info info = new Info();
         info.added = added;
         info.changed = changed;
