@@ -30,13 +30,13 @@ public class Chat {
             int size = answers.size();
 
             System.out.println("Привет, это консольный чат, введи своё сообщение");
-            while (!(input = source.getQuestion()).equals(EXIT)) {
+            while (!EXIT.equals((input = source.getQuestion()))) {
                 out.println(input);
 
-                if (input.equals(STOP)) {
+                if (STOP.equals(input)) {
                     check = false;
                 }
-                if (input.equals(CONTINUE)) {
+                if (CONTINUE.equals(input)) {
                     check = true;
                 }
                 if (check) {
