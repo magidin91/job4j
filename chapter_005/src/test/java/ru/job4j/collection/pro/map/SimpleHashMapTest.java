@@ -64,7 +64,7 @@ public class SimpleHashMapTest {
     }
 
     @Test(expected = NoSuchElementException.class)
-    public void NoSuchElementException() {
+    public void noSuchElementException() {
         SimpleHashMap<String, Integer> simpleHashMap = new SimpleHashMap<>();
         var iterator = simpleHashMap.iterator();
         for (int i = 0; i != 16; i++) {

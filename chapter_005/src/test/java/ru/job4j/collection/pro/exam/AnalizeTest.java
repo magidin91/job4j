@@ -70,7 +70,7 @@ public class AnalizeTest {
         Analize.User u5Changed = new Analize.User();
         u5Changed.id = 5;
         u5Changed.name = "u5Changed";
-        current = List.of(u1, u2, u3, u5Changed, u6);// u4 - deleted, u5 - changed, u6added
+        current = List.of(u1, u2, u3, u5Changed, u6); // u4 - deleted, u5 - changed, u6added
         assertThat(analize.diff(previous, current).changed, is(1));
         assertThat(analize.diff(previous, current).added, is(1));
         assertThat(analize.diff(previous, current).deleted, is(1));
