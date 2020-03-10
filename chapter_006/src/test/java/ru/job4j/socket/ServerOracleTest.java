@@ -38,7 +38,7 @@ public class ServerOracleTest {
 
     @Test
     public void exit() throws IOException {
-        this.testServerOracle("пока", "");
+        this.testServerOracle("пока", LN);
     }
 
     @Test
@@ -47,7 +47,7 @@ public class ServerOracleTest {
                 Joiner.on(LN).join(
                         "Привет, оракул",
                         "пока"),
-                String.format("Привет, дорогой друг, я мудрый оракул%s%s", LN, LN)
+                String.format("Привет, дорогой друг, я мудрый оракул%s%s%s", LN, LN, LN)
         );
     }
 
@@ -58,7 +58,7 @@ public class ServerOracleTest {
                         "unsupported ask",
                         "пока"
                 ),
-                String.format("Это очень сложный вопрос, я даже не знаю%s%s", LN, LN)
+                String.format("Это очень сложный вопрос, я даже не знаю%s%s%s", LN, LN, LN)
         );
     }
 }
