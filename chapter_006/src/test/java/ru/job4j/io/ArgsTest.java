@@ -1,5 +1,6 @@
 package ru.job4j.io;
 
+import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
@@ -21,6 +22,7 @@ public class ArgsTest {
     /**
      * Создаем архив, исключаем txt,  проверяем имена файлов в нём
      */
+    @Ignore
     @Test
     public void checkZip() throws IOException {
         File fileZip = folder.newFile("archive.zip");
