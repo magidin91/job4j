@@ -15,6 +15,7 @@
         <module>chapter_003</module>
         <module>chapter_004</module>
         <module>chapter_006</module>
+        <module>chapter_007</module>
     </modules>
     <properties>
         <maven.compiler.source>13</maven.compiler.source>
