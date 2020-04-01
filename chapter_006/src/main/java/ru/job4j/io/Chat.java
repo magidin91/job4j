@@ -50,10 +50,4 @@ public class Chat {
             ex.printStackTrace();
         }
     }
-
-    public static void main(String[] args) {
-        String source = "chapter_006/src/main/resources/answers_for_chat.txt";
-        String destination = "chapter_006/src/main/resources/chatlog.txt";
-        new Chat(new ConsoleInput(), source, destination).go();
-    }
 }
