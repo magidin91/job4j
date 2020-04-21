@@ -25,7 +25,7 @@ public class ChatTest {
         String source = "./src/main/resources/answers_for_chat.txt";
         File destination = folder.newFile("chatlog.txt");
         new Chat(new StubInput(answersOfUser), source, destination.getAbsolutePath()).go();
-        try (BufferedReader in = new BufferedReader(new FileReader(destination))){
+        try (BufferedReader in = new BufferedReader(new FileReader(destination))) {
             List<String> list = in.lines().collect(Collectors.toList());
             assertThat(list.get(0), is("юзерпривет"));
             assertTrue(list.get(1).length() > 0);
