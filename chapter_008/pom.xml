@@ -10,24 +10,4 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>chapter_008</artifactId>
-    <dependencies>
-        <dependency>
-            <groupId>org.jetbrains</groupId>
-            <artifactId>annotations</artifactId>
-            <version>19.0.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.jetbrains</groupId>
-            <artifactId>annotations</artifactId>
-            <version>18.0.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.jetbrains</groupId>
-            <artifactId>annotations</artifactId>
-            <version>18.0.0</version>
-            <scope>compile</scope>
-        </dependency>
-    </dependencies>
-
-
 </project>
