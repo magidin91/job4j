@@ -3,6 +3,8 @@ package ru.job4j.lsp;
 import java.time.LocalDate;
 import java.util.Objects;
 
+import static java.time.temporal.ChronoUnit.DAYS;
+
 public abstract class Food {
     private String name;
     private LocalDate createDate;
@@ -37,6 +39,15 @@ public abstract class Food {
         return discount;
     }
 
+    /**
+     * Counts a spent part of the shelf life.
+     */
+    public double getShelfLifePercentConsumption() {
+        long shelfLifeConsumption = DAYS.between(getCreateDate(), LocalDate.now());
+        long shelfLife = DAYS.between(getCreateDate(), getExpireDate());
+        return shelfLifeConsumption * 100.00 / shelfLife;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -49,6 +60,16 @@ public abstract class Food {
         this.discount = discount;
     }
 
+
+    @Override
+    public String toString() {
+        return "name='" + name + '\''
+                + ", createDate=" + createDate
+                + ", expireDate=" + expireDate
+                + ", price=" + price
+                + ", discount=" + discount + '}';
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -58,24 +79,13 @@ public abstract class Food {
             return false;
         }
         Food food = (Food) o;
-        return Double.compare(food.price, price) == 0
-                && discount == food.discount
-                && Objects.equals(name, food.name)
+        return Objects.equals(name, food.name)
                 && Objects.equals(createDate, food.createDate)
                 && Objects.equals(expireDate, food.expireDate);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, createDate, expireDate, price, discount);
-    }
-
-    @Override
-    public String toString() {
-        return "name='" + name + '\''
-                + ", createDate=" + createDate
-                + ", expireDate=" + expireDate
-                + ", price=" + price
-                + ", discount=" + discount + '}';
+        return Objects.hash(name, createDate, expireDate);
     }
 }
