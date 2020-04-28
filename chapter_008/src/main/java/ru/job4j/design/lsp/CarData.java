@@ -2,17 +2,16 @@ package ru.job4j.design.lsp;
 
 import org.jetbrains.annotations.NotNull;
 
-public abstract class Car implements Auto {
-    private final int size = 1;
+public class CarData implements Auto {
     private String numberPlate;
 
-    public Car(@NotNull String numberPlate) {
+    public CarData(@NotNull String numberPlate) {
         this.numberPlate = numberPlate;
     }
 
     @Override
     public int getSize() {
-        return size;
+        return 1;
     }
 
     @Override

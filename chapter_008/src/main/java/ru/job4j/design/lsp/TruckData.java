@@ -2,11 +2,11 @@ package ru.job4j.design.lsp;
 
 import org.jetbrains.annotations.NotNull;
 
-public abstract class Truck implements Auto {
+public class TruckData implements Auto {
     private final int size;
     private String numberPlate;
 
-    public Truck(int size, @NotNull String numberPlate) {
+    public TruckData(int size, @NotNull String numberPlate) {
         this.size = size;
         this.numberPlate = numberPlate;
     }
