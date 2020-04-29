@@ -9,15 +9,26 @@ public abstract class MapStorage implements Storage {
     private final Map<String, List<Food>> storage = new HashMap<>();
 
     @Override
-    public abstract boolean add(Food food);
+    public abstract boolean distribute(Food food);
 
-    public  List<Food> getFood(String name) {
-        return  storage.get(name);
+    @Override
+    public List<Food> getFood(String name) {
+        return storage.get(name);
+    }
+
+    @Override
+    public List<Food> getAllFood() {
+        List<Food> allFood = new ArrayList<>();
+        for (List<Food> product : storage.values()) {
+            allFood.addAll(product);
+        }
+        return allFood;
     }
 
     public Map<String, List<Food>> getStorage() {
         return storage;
     }
+
 
     /**
      * Returns list of this food if it exists or create it and returns.

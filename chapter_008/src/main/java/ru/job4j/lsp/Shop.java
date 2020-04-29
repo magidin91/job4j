@@ -7,7 +7,7 @@ public class Shop extends MapStorage {
     }
 
     @Override
-    public boolean add(Food food) {
+    public boolean distribute(Food food) {
         boolean rsl = false;
         double shelfLifeConsumption = food.getShelfLifePercentConsumption();
         if (shelfLifeConsumption >= 25 && shelfLifeConsumption < 100) {

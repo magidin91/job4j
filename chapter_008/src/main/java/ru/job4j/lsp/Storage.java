@@ -6,10 +6,15 @@ public interface Storage {
     /**
      * Add food to the storage
      */
-    boolean add(Food food);
+    boolean distribute(Food food);
 
     /**
      * Returns list of food with specific name (for example "bread", "milk" etc..)
      */
     List<Food> getFood(String name);
+
+    /**
+     * Returns list of all food  in storage
+     */
+    List<Food> getAllFood();
 }
