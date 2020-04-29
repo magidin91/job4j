@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 public abstract class MapStorage implements Storage {
-    private final Map<String, List<Food>> storage = new HashMap<>();
+    private Map<String, List<Food>> storage = new HashMap<>();
 
     @Override
     public abstract boolean distribute(Food food);
@@ -25,6 +25,10 @@ public abstract class MapStorage implements Storage {
         return allFood;
     }
 
+    public void resetStorage() {
+        storage = new HashMap<>();
+    }
+
     public Map<String, List<Food>> getStorage() {
         return storage;
     }
@@ -34,7 +38,6 @@ public abstract class MapStorage implements Storage {
      * Returns list of this food if it exists or create it and returns.
      */
     public List<Food> getExistingOrCreateFoodList(Food food) {
-        Map<String, List<Food>> storage = getStorage();
         String foodName = food.getName();
         List<Food> foodList = storage.get(foodName);
         if (foodList == null) {

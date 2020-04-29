@@ -12,10 +12,22 @@ public class ControlQuality {
         this.listStorage = new ArrayList<>(storageList);
     }
 
-    public void distribute(Food food) {
+    public void distribute(@NotNull Food food) {
         for (Storage storage : listStorage) {
             if (storage.distribute(food)) {
                 break;
+            }
+        }
+    }
+
+    /**
+     * Redistributes food in all storages
+     */
+    public void resort() {
+        for (Storage storage : listStorage) {
+            for (Food food : storage.getAllFood()) {
+                storage.resetStorage();
+                storage.distribute(food);
             }
         }
     }

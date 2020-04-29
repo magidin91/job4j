@@ -14,7 +14,12 @@ public interface Storage {
     List<Food> getFood(String name);
 
     /**
-     * Returns list of all food  in storage
+     * Returns list of all food in storage
      */
     List<Food> getAllFood();
+
+    /**
+     * Resets the storage
+     */
+    void resetStorage();
 }
