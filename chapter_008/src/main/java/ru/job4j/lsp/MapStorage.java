@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 public abstract class MapStorage implements Storage {
-    private Map<String, List<Food>> storage = new HashMap<>();
+    private final Map<String, List<Food>> storage = new HashMap<>();
 
     @Override
     public abstract boolean distribute(Food food);
@@ -26,7 +26,7 @@ public abstract class MapStorage implements Storage {
     }
 
     public void resetStorage() {
-        storage = new HashMap<>();
+        storage.clear();
     }
 
     public Map<String, List<Food>> getStorage() {
