@@ -27,7 +27,7 @@ public class Menu implements IMenu {
             ParentActionMenuItem item = allItems.get(answer);
             if (item != null) {
                 item.executeAction();
-            } else if ("exit" .equals(answer.toLowerCase())) {
+            } else if ("exit".equals(answer.toLowerCase())) {
                 output.accept("====Bye====");
                 run = false;
             } else {
@@ -36,7 +36,7 @@ public class Menu implements IMenu {
         }
     }
 
-    public void show(List<ParentActionMenuItem> items) {
+    private void show(List<ParentActionMenuItem> items) {
         for (ParentActionMenuItem item : items) {
             if (item == null) {
                 continue;
