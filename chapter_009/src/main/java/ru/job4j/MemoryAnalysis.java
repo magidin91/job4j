@@ -19,6 +19,7 @@ public class MemoryAnalysis {
     }
 
     public static void main(String[] args) {
-        new MemoryAnalysis().create(2000);
+        MemoryAnalysis memoryAnalysis = new MemoryAnalysis();
+        memoryAnalysis.create(10000);
     }
 }
