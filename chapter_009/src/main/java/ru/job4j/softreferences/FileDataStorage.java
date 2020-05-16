@@ -9,14 +9,10 @@ import java.io.IOException;
 import java.util.stream.Collectors;
 
 public class FileDataStorage implements DataStorage<String, String> {
-    private static final Logger LOG = LoggerFactory.getLogger(SoftCache.class.getName());
+    private static final Logger LOG = LoggerFactory.getLogger(CacheEmulation.class.getName());
 
-    /**
-     * Reads data from a file.
-     * Returns null if it is not possible to retrieve a data from a file.
-     */
     @Override
-    public String get(String path) {
+    public String getValue(String path) {
         String rsl = null;
         try (BufferedReader read = new BufferedReader(new FileReader(path))) {
             rsl = read.lines().collect(Collectors.joining(System.lineSeparator()));

@@ -4,34 +4,28 @@ import java.lang.ref.SoftReference;
 import java.util.HashMap;
 import java.util.Map;
 
-public class SoftCache implements Cache<String, String> {
-    private final Map<String, SoftReference<String>> cache = new HashMap<>();
-    private final DataStorage<String, String> dataStorage;
-
-    public SoftCache(DataStorage<String, String> dataStorage) {
-        this.dataStorage = dataStorage;
-    }
+public class SoftCache<K, V> implements Cache<K, V> {
+    private final Map<K, SoftReference<V>> map = new HashMap<>();
 
     @Override
-    public String get(String key) {
-        String rsl;
-        SoftReference<String> softReference = cache.get(key);
+    public V get(K key) {
+        V rsl = null;
+        SoftReference<V> softReference = map.get(key);
         if (softReference != null) {
             rsl = softReference.get();
-        } else {
-            rsl = dataStorage.get(key);
-            addToCache(key, rsl);
         }
         return rsl;
     }
 
-    /**
-     * Adds the received string to the cache
-     */
-    private void addToCache(String key, String rsl) {
-        if (rsl != null) {
-            SoftReference<String> softValue = new SoftReference<>(rsl);
-            cache.put(key, softValue);
+    @Override
+    public boolean put(K key, V value) {
+        boolean rsl = false;
+        if (value != null) {
+            SoftReference<V> softValue = new SoftReference<>(value);
+            map.put(key, softValue);
+            rsl = true;
         }
+        return rsl;
     }
 }
+
