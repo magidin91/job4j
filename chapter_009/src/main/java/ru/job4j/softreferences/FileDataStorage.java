@@ -12,11 +12,11 @@ public class FileDataStorage implements DataStorage<String, String> {
     private static final Logger LOG = LoggerFactory.getLogger(SoftCache.class.getName());
 
     /**
-     * Reads data from a file
+     * Reads data from a file.
      * Returns null if it is not possible to retrieve a data from a file.
      */
     @Override
-    public String read(String path) {
+    public String get(String path) {
         String rsl = null;
         try (BufferedReader read = new BufferedReader(new FileReader(path))) {
             rsl = read.lines().collect(Collectors.joining(System.lineSeparator()));

@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class SoftCache implements Cache<String, String> {
-    Map<String, SoftReference<String>> cache = new HashMap<>();
+    private final Map<String, SoftReference<String>> cache = new HashMap<>();
     private final DataStorage<String, String> dataStorage;
 
     public SoftCache(DataStorage<String, String> dataStorage) {
@@ -19,14 +19,14 @@ public class SoftCache implements Cache<String, String> {
         if (softReference != null) {
             rsl = softReference.get();
         } else {
-            rsl = dataStorage.read(key);
+            rsl = dataStorage.get(key);
             addToCache(key, rsl);
         }
         return rsl;
     }
 
     /**
-     * Adds the read string to the cache
+     * Adds the received string to the cache
      */
     private void addToCache(String key, String rsl) {
         if (rsl != null) {

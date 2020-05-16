@@ -2,7 +2,7 @@ package ru.job4j.softreferences;
 
 public interface DataStorage<K, V> {
     /**
-     * Returns a value from the storage
+     * Returns a value from storage by the key
      */
-    V read(K key);
+    V get(K key);
 }

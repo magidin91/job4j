@@ -12,7 +12,7 @@ public class SoftCacheTest {
     @Test
     public void addToCashAndGetFromCash() {
         String exp = new StringJoiner(System.lineSeparator()).add("Hello world!").add("Hello world!").toString();
-        Cache<String, String> cache = new SoftCache(data -> exp);
+        Cache<String, String> cache = new SoftCache(key -> exp);
         String rsl = cache.get("");
         assertThat(rsl, is(exp));
     }
@@ -20,7 +20,8 @@ public class SoftCacheTest {
     @Test
     public void getFromCash() {
         String exp = new StringJoiner(System.lineSeparator()).add("Hello world!").add("Hello world!").toString();
-        Cache<String, String> cache = new SoftCache(data -> exp);
+        Cache<String, String> cache = new SoftCache(key -> exp);
+        cache.get("");
         String rsl = cache.get("");
         assertThat(rsl, is(exp));
     }
