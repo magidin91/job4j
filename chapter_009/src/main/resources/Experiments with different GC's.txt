@@ -1,0 +1,94 @@
+1. Используя разные ключи запуска виртуальной машины установить различные виды сборщика мусора.
+2. Оценить поведения срабатывания различных типов сборщиков мусора для программы из первого урока данной модуля.
+Создаем 10000 объектов + -Xmx4m
+-XX:+UseSerialGC
+[0.103s][info][gc] Using Serial
+[0.802s][info][gc] GC(0) Pause Young (Allocation Failure) 1M->0M(3M) 4.849ms
+[1.094s][info][gc] GC(1) Pause Young (Allocation Failure) 1M->1M(3M) 3.428ms
+[1.099s][info][gc] GC(2) Pause Young (Allocation Failure) 2M->1M(3M) 0.940ms
+usedMemory: 1
+freeMemory: 1
+totalMemory: 3
+maxMemory: 3
+[1.543s][info][gc] GC(3) Pause Young (Allocation Failure) 2M->1M(3M) 3.970ms
+[1.630s][info][gc] GC(4) Pause Young (Allocation Failure) 2M->3M(3M) 8.155ms
+[1.643s][info][gc] GC(5) Pause Full (Allocation Failure) 3M->2M(3M) 13.100ms
+[2.766s][info][gc] GC(6) Pause Full (Allocation Failure) 3M->3M(3M) 14.281ms
+
+-XX:+UseParallelGC
+[0.044s][info][gc] Using Parallel
+[0.221s][info][gc] GC(0) Pause Young (Allocation Failure) 0M->0M(3M) 3.885ms
+[0.384s][info][gc] GC(1) Pause Young (Allocation Failure) 0M->0M(3M) 2.083ms
+[0.454s][info][gc] GC(2) Pause Young (Allocation Failure) 0M->0M(3M) 2.278ms
+[0.520s][info][gc] GC(3) Pause Young (Allocation Failure) 1M->1M(3M) 3.333ms
+[0.525s][info][gc] GC(4) Pause Young (Allocation Failure) 1M->1M(3M) 1.520ms
+[0.527s][info][gc] GC(5) Pause Young (Allocation Failure) 1M->1M(3M) 1.156ms
+[0.532s][info][gc] GC(6) Pause Young (Allocation Failure) 1M->1M(3M) 1.977ms
+[0.715s][info][gc] GC(7) Pause Young (Allocation Failure) 1M->1M(3M) 1.769ms
+usedMemory: 1
+freeMemory: 1
+totalMemory: 3
+maxMemory: 3
+[0.745s][info][gc] GC(8) Pause Young (Allocation Failure) 2M->2M(3M) 3.624ms
+[0.782s][info][gc] GC(9) Pause Young (Allocation Failure) 2M->2M(3M) 5.778ms
+[1.133s][info][gc] GC(10) Pause Young (Allocation Failure) 2M->2M(3M) 4.030ms
+[1.161s][info][gc] GC(11) Pause Full (Ergonomics) 2M->2M(3M) 27.418ms
+
+-XX:+UseG1GC
+[0.035s][info][gc] Using G1
+[0.091s][info][gc] Periodic GC disabled
+[0.381s][info][gc] GC(0) Pause Young (Normal) (G1 Evacuation Pause) 1M->0M(4M) 22.379ms
+[0.598s][info][gc] GC(1) Pause Young (Normal) (G1 Evacuation Pause) 1M->1M(4M) 4.057ms
+[0.602s][info][gc] GC(2) To-space exhausted
+[0.602s][info][gc] GC(2) Pause Young (Normal) (G1 Evacuation Pause) 2M->1M(4M) 2.153ms
+usedMemory: 2
+freeMemory: 1
+totalMemory: 4
+maxMemory: 4
+[0.740s][info][gc] GC(3) To-space exhausted
+[0.740s][info][gc] GC(3) Pause Young (Concurrent Start) (G1 Evacuation Pause) 2M->2M(4M) 4.740ms
+[0.740s][info][gc] GC(4) Concurrent Cycle
+[0.749s][info][gc] GC(4) Pause Remark 2M->2M(4M) 0.487ms
+[0.763s][info][gc] GC(4) Pause Cleanup 3M->3M(4M) 0.030ms
+[0.764s][info][gc] GC(4) Concurrent Cycle 23.502ms
+[0.900s][info][gc] GC(5) To-space exhausted
+[0.900s][info][gc] GC(5) Pause Young (Prepare Mixed) (G1 Evacuation Pause) 3M->3M(4M) 18.070ms
+[0.922s][info][gc] GC(6) Pause Full (G1 Evacuation Pause) 3M->2M(4M) 22.205ms
+
+-XX:+UnlockExperimentalVMOptions -XX:+UseZGC
+[0.076s][info][gc] Using The Z Garbage Collector
+[0.386s][info][gc] GC(0) Garbage Collection (Warmup) 2M(50%)->2M(50%)
+[0.396s][info][gc] GC(1) Garbage Collection (Allocation Stall) 2M(50%)->2M(50%)
+[0.397s][info][gc] Allocation Stall (main) 40.269ms
+[0.407s][info][gc] GC(2) Garbage Collection (Allocation Stall) 2M(50%)->2M(50%)
+[0.407s][info][gc] Allocation Stall (main) 10.033ms
+[0.407s][info][gc] Out Of Memory (main)
+[0.417s][info][gc] GC(3) Garbage Collection (Allocation Stall) 2M(50%)->2M(50%)
+[0.417s][info][gc] Allocation Stall (main) 9.373ms
+[0.428s][info][gc] GC(4) Garbage Collection (Allocation Stall) 2M(50%)->2M(50%)
+[0.429s][info][gc] Allocation Stall (main) 11.986ms
+[0.429s][info][gc] Out Of Memory (main)
+[0.439s][info][gc] GC(5) Garbage Collection (Allocation Stall) 2M(50%)->2M(50%)
+[0.439s][info][gc] Allocation Stall (main) 10.219ms
+[0.448s][info][gc] GC(6) Garbage Collection (Allocation Stall) 2M(50%)->2M(50%)
+[0.449s][info][gc] Allocation Stall (main) 9.089ms
+[0.449s][info][gc] Out Of Memory (main)
+Error occurred during initialization of VM
+java.lang.OutOfMemoryError: Java heap space
+	<<no stack trace available>>
+[0.458s][info][gc] GC(7) Garbage Collection (Warmup) 2M(50%)->2M(50%)
+
+При использовании ZGC выбрасывается java.lang.OutOfMemoryError из-за нехватки памяти, которая была задана -Xmx4m.
+При использовании G1 получаем - To-space exhausted, это происходит, когда в куче недостаточно свободного места для продвижения
+сохраненных или продвигаемых объектов (или того и другого),и куча не может быть расширена больше.
+ParallelGC вступал в работу большее количество раз. Все GC кроме ZGC корректно успевают очистить память.
+
+
+3.Как вы считаете какой из сборщиков мусора подойдет наиболее оптимально для приложения заявок из второго модуля?
+Т.к. в приложение заявок создается относительно немного объектов, которые затем необходимо будет уничтожить сборщику мусора,
+то использовать можно любой из них. Но т.к. программа используется на современной машине, предпочтительнее будет использовать
+G1 для сокращения STW пауз.
+
+4.Какой тип сборщика будет оптимален для сервеного приложения?
+Для серверных приложениях, работающих на многопроцессорных серверах и оперирующих большими объемами данных,
+предпочтительней использование G1.

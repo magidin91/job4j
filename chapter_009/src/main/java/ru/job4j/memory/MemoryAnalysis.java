@@ -19,6 +19,6 @@ public class MemoryAnalysis {
     }
 
     public static void main(String[] args) {
-        new MemoryAnalysis().create(2000);
+        new MemoryAnalysis().create(10000);
     }
 }
