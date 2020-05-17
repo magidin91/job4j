@@ -7,8 +7,8 @@ import static java.time.temporal.ChronoUnit.DAYS;
 
 public abstract class Food {
     private String name;
-    private LocalDate createDate;
-    private LocalDate expireDate;
+    private final LocalDate createDate;
+    private final LocalDate expireDate;
     private double price;
     private int discount;
 

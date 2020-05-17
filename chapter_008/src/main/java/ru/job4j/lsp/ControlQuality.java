@@ -6,14 +6,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ControlQuality {
-    private final List<Storage> listStorage;
+    private final List<Storage> storages;
 
     public ControlQuality(@NotNull List<Storage> storageList) {
-        this.listStorage = new ArrayList<>(storageList);
+        this.storages = new ArrayList<>(storageList);
     }
 
     public void distribute(Food food) {
-        for (Storage storage : listStorage) {
+        for (Storage storage : storages) {
             if (storage.distribute(food)) {
                 break;
             }
@@ -21,15 +21,11 @@ public class ControlQuality {
     }
 
     public boolean addStorage(@NotNull Storage storage) {
-        return listStorage.add(storage);
-    }
-
-    public List<Storage> getStorages() {
-        return listStorage;
+        return storages.add(storage);
     }
 
     @Override
     public String toString() {
-        return "Storages:" + listStorage;
+        return "Storages:" + storages;
     }
 }
