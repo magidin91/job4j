@@ -1,4 +1,4 @@
-package ru.job4j.lsp;
+package ru.job4j.lsp.storage;
 
 import org.jetbrains.annotations.NotNull;
 
