@@ -14,50 +14,61 @@ public class ControlQualityTest {
 
     @Test
     public void distributeInWarehouse() {
-        ControlQuality controlQuality = new ControlQuality(List.of(new Warehouse(), new Shop(), new Trash()));
+        Warehouse warehouse = new Warehouse();
+        ControlQuality controlQuality = new ControlQuality(List.of(warehouse, new Shop(), new Trash()));
         LocalDate now = LocalDate.now();
         Food bread = new Bread("bread", now.minusDays(1), now.plusDays(10), 120);
         controlQuality.distribute(bread);
-        assertThat(controlQuality.getStorages().get(0).getFood(bread.getName()).get(0), is(bread));
+        assertThat(warehouse.getFood(bread.getName()).get(0), is(bread));
     }
 
     @Test
     public void distributeInShop() {
-        ControlQuality controlQuality = new ControlQuality(List.of(new Warehouse(), new Shop(), new Trash()));
+        Shop shop = new Shop();
+        ControlQuality controlQuality = new ControlQuality(List.of(new Warehouse(), shop, new Trash()));
         LocalDate now = LocalDate.now();
         Food bread = new Bread("bread", now.minusDays(10), now.plusDays(10), 120);
         controlQuality.distribute(bread);
-        assertThat(controlQuality.getStorages().get(1).getFood(bread.getName()).get(0), is(bread));
+        assertThat(shop.getFood(bread.getName()).get(0), is(bread));
     }
 
     @Test
     public void distributeInShopAndMakeDiscount() {
-        ControlQuality controlQuality = new ControlQuality(List.of(new Warehouse(), new Shop(), new Trash()));
+        Shop shop = new Shop();
+        ControlQuality controlQuality = new ControlQuality(List.of(new Warehouse(), shop, new Trash()));
         LocalDate now = LocalDate.now();
         Food bread = new Bread("bread", now.minusDays(90), now.plusDays(10), 120);
         controlQuality.distribute(bread);
-        assertEquals(30, controlQuality.getStorages().get(1).getFood(bread.getName()).get(0).getDiscount());
+        assertEquals(30, shop.getFood(bread.getName()).get(0).getDiscount());
     }
 
     @Test
     public void distributeInTrash() {
-        ControlQuality controlQuality = new ControlQuality(List.of(new Warehouse(), new Shop(), new Trash()));
+        Trash trash = new Trash();
+        ControlQuality controlQuality = new ControlQuality(List.of(new Warehouse(), new Shop(), trash));
         LocalDate now = LocalDate.now();
         Food bread = new Bread("bread", now.minusDays(10), now.minusDays(1), 120);
         controlQuality.distribute(bread);
-        assertThat(controlQuality.getStorages().get(2).getFood(bread.getName()).get(0), is(bread));
+        assertThat(trash.getFood(bread.getName()).get(0), is(bread));
     }
 
     @Test
-    public void addOneStorage() {
+    public void addStorageWarehouseAndDistributeInWarehouse() {
         ControlQuality controlQuality = new ControlQuality(Collections.emptyList());
-        controlQuality.addStorage(new Warehouse());
-        assertEquals(1, controlQuality.getStorages().size());
+        Warehouse warehouse = new Warehouse();
+        controlQuality.addStorage(warehouse);
+        LocalDate now = LocalDate.now();
+        Food bread = new Bread("bread", now.minusDays(1), now.plusDays(10), 120);
+        controlQuality.distribute(bread);
+        assertThat(warehouse.getFood(bread.getName()).get(0), is(bread));
     }
 
     @Test
     public void distributeAndResort() {
-        ControlQuality controlQuality = new ControlQuality(List.of(new Warehouse(), new Shop(), new Trash()));
+        Warehouse warehouse = new Warehouse();
+        Shop shop = new Shop();
+        Trash trash = new Trash();
+        ControlQuality controlQuality = new ControlQuality(List.of(warehouse, shop, trash));
         LocalDate now = LocalDate.now();
         Food breadInWarehouse = new Bread("bread", now.minusDays(1), now.plusDays(10), 120);
         controlQuality.distribute(breadInWarehouse);
@@ -66,8 +77,8 @@ public class ControlQualityTest {
         Food breadInTrash = new Bread("bread", now.minusDays(10), now.minusDays(1), 120);
         controlQuality.distribute(breadInTrash);
         controlQuality.resort();
-        assertThat(controlQuality.getStorages().get(0).getFood(breadInWarehouse.getName()).get(0), is(breadInWarehouse));
-        assertThat(controlQuality.getStorages().get(1).getFood(breadInShop.getName()).get(0), is(breadInShop));
-        assertThat(controlQuality.getStorages().get(2).getFood(breadInTrash.getName()).get(0), is(breadInTrash));
+        assertThat(warehouse.getFood(breadInWarehouse.getName()).get(0), is(breadInWarehouse));
+        assertThat(shop.getFood(breadInShop.getName()).get(0), is(breadInShop));
+        assertThat(trash.getFood(breadInTrash.getName()).get(0), is(breadInTrash));
     }
 }
