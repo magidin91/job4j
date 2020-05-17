@@ -25,6 +25,10 @@ public abstract class MapStorage implements Storage {
         return allFood;
     }
 
+    public void resetStorage() {
+        storage.clear();
+    }
+
     public Map<String, List<Food>> getStorage() {
         return storage;
     }
@@ -34,7 +38,6 @@ public abstract class MapStorage implements Storage {
      * Returns list of this food if it exists or create it and returns.
      */
     public List<Food> getExistingOrCreateFoodList(Food food) {
-        Map<String, List<Food>> storage = getStorage();
         String foodName = food.getName();
         List<Food> foodList = storage.get(foodName);
         if (foodList == null) {
