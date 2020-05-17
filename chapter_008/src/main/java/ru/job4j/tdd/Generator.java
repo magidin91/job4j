@@ -1,4 +1,4 @@
-package ru.job4j.design.srp.tdd;
+package ru.job4j.tdd;
 
 import java.util.Map;
 

@@ -1,4 +1,4 @@
-package ru.job4j.design.srp.tdd;
+package ru.job4j.tdd;
 
 import org.junit.Ignore;
 import org.junit.Test;
@@ -12,7 +12,7 @@ import static org.junit.Assert.*;
 public class GeneratorTest {
 
     @Test(expected = IllegalStateException.class)
-    public void getTemplateKeysMoreMapKeys() throws Exception {
+    public void whenTemplateKeysMoreMapKeys() throws Exception {
         Generator generator = (template, args) -> null;
         String template = "I am a ${name}, Who are ${subject}?";
         Map<String, String> args = Map.of("name", "John");
@@ -20,15 +20,15 @@ public class GeneratorTest {
     }
 
     @Test(expected = IllegalStateException.class)
-    public void getTemplateKeysMoreAppropriateMapKeys() throws Exception {
+    public void whenMapKeysNotAppropriateTemplateKeys() throws Exception {
         Generator generator = (template, args) -> null;
         String template = "I am a ${name}, Who are ${subject}?";
-        Map<String, String> args = Map.of("name", "John", "OBJECT", "you");
+        Map<String, String> args = Map.of("name", "John", "NotSuchKeys", "you");
         generator.produce(template, args);
     }
 
     @Test(expected = IllegalStateException.class)
-    public void getMapExtraKeys() throws Exception {
+    public void whenMapKeysMoreTemplateKeys() throws Exception {
         Generator generator = (template, args) -> null;
         String template = "I am a ${name}, Who are ${subject}?";
         Map<String, String> args = Map.of("name", "John", "subject", "you", "name2", "John2");
@@ -36,7 +36,7 @@ public class GeneratorTest {
     }
 
     @Test
-    public void getAppropriateKeys() throws Exception {
+    public void whenAppropriateKeys() throws Exception {
         Generator generator = (template, args) -> null;
         String template = "I am a ${name}, Who are ${subject}?";
         Map<String, String> args = Map.of("name", "John", "subject", "you");
