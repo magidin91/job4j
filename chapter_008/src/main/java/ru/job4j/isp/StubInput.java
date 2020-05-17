@@ -1,4 +1,4 @@
-package ru.job4j.design.isp;
+package ru.job4j.isp;
 
 import java.util.List;
 import java.util.function.Supplier;

@@ -1,4 +1,4 @@
-package ru.job4j.design.isp;
+package ru.job4j.isp;
 
 import org.jetbrains.annotations.NotNull;
 

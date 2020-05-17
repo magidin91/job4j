@@ -1,4 +1,4 @@
-package ru.job4j.design.isp;
+package ru.job4j.isp;
 
 import java.util.*;
 import java.util.function.Consumer;
@@ -50,6 +50,9 @@ public class Menu implements IMenu {
         }
     }
 
+    /**
+     * The example of the menu for visualization.
+     */
     public static void main(String[] args) {
         ParentActionMenuItemImpl item11 = new ParentActionMenuItemImpl("1.1", () -> System.out.println("it's working"),
                 List.of(new ParentActionMenuItemImpl("1.1.1", () -> System.out.println("it's working"), null),
