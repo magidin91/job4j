@@ -1,4 +1,4 @@
-package ru.job4j.design.srp;
+package ru.job4j.srp;
 
 import java.util.StringJoiner;
 import java.util.function.Predicate;

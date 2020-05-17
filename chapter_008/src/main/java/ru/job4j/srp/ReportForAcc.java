@@ -1,14 +1,14 @@
-package ru.job4j.design.srp;
+package ru.job4j.srp;
 
 import java.util.function.Predicate;
 
 /**
- * Class represents a default report
+ * Class represents a report for accountants
  */
-public class ReportEngine implements Report {
+public class ReportForAcc implements Report {
     private Store store;
 
-    public ReportEngine(Store store) {
+    public ReportForAcc(Store store) {
         this.store = store;
     }
 
@@ -20,7 +20,7 @@ public class ReportEngine implements Report {
                     .append(employee.getName()).append(";")
                     .append(employee.getHired()).append(";")
                     .append(employee.getFired()).append(";")
-                    .append(employee.getSalary()).append(";")
+                    .append(employee.getSalary()).append("$").append(";")
                     .append(System.lineSeparator());
         }
         return text.toString();

@@ -1,14 +1,16 @@
-package ru.job4j.design.srp;
+package ru.job4j.ocp;
 
 import org.junit.Test;
+import ru.job4j.srp.Employee;
+import ru.job4j.srp.MemStore;
 
 import java.util.Calendar;
 import java.util.StringJoiner;
 
 import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertThat;
 
-public class ReportForDevTest {
+public class ReportXMLTest {
     private static final String LN = System.lineSeparator();
 
     @Test
@@ -17,18 +19,11 @@ public class ReportForDevTest {
         Calendar now = Calendar.getInstance();
         Employee worker = new Employee("Ivan", now, now, 100);
         store.add(worker);
-        ReportForDev engine = new ReportForDev(store);
+        ReportXML engine = new ReportXML(store);
         StringJoiner expect = new StringJoiner(LN,
-                "<!DOCTYPE html>"
-                        + LN + "<html>"
-                        + LN + "<head>" + LN + "<meta charset=\"UTF-8\">"
-                        + LN + "<title>Information</title>"
-                        + LN + "</head>"
-                        + LN + "<body>"
+                "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
                         + LN + "<emploees>" + LN,
-                LN + "</emploees>"
-                        + LN + "</body>"
-                        + LN + "</html>");
+                LN + "</emploees>");
         expect.add("<name>" + worker.getName() + "</name>")
                 .add("<hired>" + worker.getHired() + "</hired>")
                 .add("<fired>" + worker.getFired() + "</fired>")

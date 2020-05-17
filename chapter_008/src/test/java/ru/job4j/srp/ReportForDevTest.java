@@ -1,4 +1,4 @@
-package ru.job4j.design.srp;
+package ru.job4j.srp;
 
 import org.junit.Test;
 
@@ -8,7 +8,7 @@ import java.util.StringJoiner;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.*;
 
-public class ReportXMLTest {
+public class ReportForDevTest {
     private static final String LN = System.lineSeparator();
 
     @Test
@@ -17,11 +17,18 @@ public class ReportXMLTest {
         Calendar now = Calendar.getInstance();
         Employee worker = new Employee("Ivan", now, now, 100);
         store.add(worker);
-        ReportXML engine = new ReportXML(store);
+        ReportForDev engine = new ReportForDev(store);
         StringJoiner expect = new StringJoiner(LN,
-                "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
+                "<!DOCTYPE html>"
+                        + LN + "<html>"
+                        + LN + "<head>" + LN + "<meta charset=\"UTF-8\">"
+                        + LN + "<title>Information</title>"
+                        + LN + "</head>"
+                        + LN + "<body>"
                         + LN + "<emploees>" + LN,
-                LN + "</emploees>");
+                LN + "</emploees>"
+                        + LN + "</body>"
+                        + LN + "</html>");
         expect.add("<name>" + worker.getName() + "</name>")
                 .add("<hired>" + worker.getHired() + "</hired>")
                 .add("<fired>" + worker.getFired() + "</fired>")

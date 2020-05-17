@@ -1,4 +1,7 @@
-package ru.job4j.design.srp;
+package ru.job4j.ocp;
+
+import ru.job4j.srp.Employee;
+import ru.job4j.srp.Store;
 
 import java.util.StringJoiner;
 import java.util.function.Predicate;

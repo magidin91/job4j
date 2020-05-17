@@ -1,6 +1,8 @@
-package ru.job4j.design.srp;
+package ru.job4j.ocp;
 
 import org.junit.Test;
+import ru.job4j.srp.Employee;
+import ru.job4j.srp.MemStore;
 
 import java.util.Calendar;
 import java.util.StringJoiner;
