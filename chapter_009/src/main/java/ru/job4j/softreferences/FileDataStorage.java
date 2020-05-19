@@ -8,6 +8,9 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.stream.Collectors;
 
+/**
+ * The class provides getting data from a file
+ */
 public class FileDataStorage implements DataStorage<String, String> {
     private static final Logger LOG = LoggerFactory.getLogger(CacheEmulation.class.getName());
 

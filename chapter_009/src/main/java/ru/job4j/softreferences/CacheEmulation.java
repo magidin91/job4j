@@ -1,5 +1,8 @@
 package ru.job4j.softreferences;
 
+/**
+ * A program that emulates cache behavior
+ */
 public class CacheEmulation<K, V> {
     private final Cache<K, V> cache;
     private final DataStorage<K, V> dataStorage;

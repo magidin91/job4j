@@ -4,6 +4,9 @@ import java.lang.ref.SoftReference;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * A cache based on soft references
+ */
 public class SoftCache<K, V> implements Cache<K, V> {
     private final Map<K, SoftReference<V>> map = new HashMap<>();
 
