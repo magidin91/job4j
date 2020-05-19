@@ -1,11 +1,10 @@
 package ru.job4j.jdbc;
 
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class UsageLog4j2 {
-
-    private static final Logger LOG = LogManager.getLogger(UsageLog4j2.class.getName());
+    private static final Logger LOG = LoggerFactory.getLogger(SQLStorage.class);
 
     public static void main(String[] args) {
         LOG.trace("trace message");
