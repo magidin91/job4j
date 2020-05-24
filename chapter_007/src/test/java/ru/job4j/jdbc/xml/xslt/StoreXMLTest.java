@@ -21,7 +21,7 @@ public class StoreXMLTest {
     @Ignore
     @Test
     public void saveListAndRead() {
-        File f = null;
+        File f;
         List<Entry> list = List.of(new Entry(1), new Entry(2), new Entry(3));
         StringBuilder rsl = new StringBuilder();
         String expected = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>"
