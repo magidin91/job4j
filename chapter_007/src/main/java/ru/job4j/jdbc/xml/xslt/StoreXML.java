@@ -12,7 +12,7 @@ import java.util.List;
  * Использование JAXB
  */
 public class StoreXML {
-    private File target;
+    private final File target;
 
     public StoreXML(File target) {
         this.target = target;

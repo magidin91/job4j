@@ -21,7 +21,6 @@ public class SAXTest {
         File dest;
         List<Entry> list = List.of(new Entry(1), new Entry(2), new Entry(3));
         File scheme = new File("./src/main/resources/schema.xsl");
-
         try {
             source = folder.newFile("xmlCode.xml");
             dest = folder.newFile("dest.xml");
