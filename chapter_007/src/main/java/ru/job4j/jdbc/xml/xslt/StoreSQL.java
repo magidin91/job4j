@@ -5,23 +5,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StoreSQL implements AutoCloseable {
-    private final Config config;
-    private Connection connect;
+    private final Connection connect;
 
-    public StoreSQL(Config config) {
-        this.config = config;
-        init();
-    }
-
-    /**
-     * Метод устанавливает соединение с БД (SQLite)
-     */
-    public void init() {
-        try {
-            connect = DriverManager.getConnection(config.get("url"));
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+    public StoreSQL(Connection connect) {
+        this.connect = connect;
     }
 
     /**
