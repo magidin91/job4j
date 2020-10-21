@@ -18,6 +18,7 @@ public class CheckerTest {
         four.next = first;
         assertTrue(new Checker().hasCycle(first));
     }
+
     @Test
     public void cycleTwoToTwo() {
         Node<Integer> first = new Node<>(1);
@@ -40,6 +41,7 @@ public class CheckerTest {
         four.next = five;
         assertTrue(new Checker().hasCycle(first));
     }
+
     @Test
     public void cycleOneToone() {
         Node<Integer> first = new Node<>(1);

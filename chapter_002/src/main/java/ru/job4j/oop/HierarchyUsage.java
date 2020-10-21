@@ -12,7 +12,7 @@ public class HierarchyUsage {
         Object ocar = new Car();
         // Приведение типа за счет повышение по иерархии.
         Car carFromObject = (Car) ocar;
-        
+
         // Ошибка в приведении типа.
         Object bicycle = new Bicycle();
         Car cb = (Car) bicycle; // код завершится с ошибок приведения типов ClassCastException

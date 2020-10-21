@@ -5,7 +5,7 @@ public class Story {
         Pioneer petya = new Pioneer();
         Girl girl = new Girl();
         Wolf wolf = new Wolf();
-        
+
         girl.help(petya);
         wolf.eat(girl);
         petya.kill(wolf);

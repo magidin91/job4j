@@ -9,12 +9,14 @@ public class SimpleStack<T> {
     public void push(T value) {
         simpleArrayList.add(value);
     }
+
     /**
      * Возвращает последний вставленный элемент (начало) и удаляет его
      */
     public T poll() {
         return simpleArrayList.delete();
     }
+
     public int getSize() {
         return simpleArrayList.getSize();
     }

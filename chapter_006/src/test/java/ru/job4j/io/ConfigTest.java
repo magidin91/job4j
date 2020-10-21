@@ -22,7 +22,7 @@ public class ConfigTest {
         );
     }
 
-   @Test
+    @Test
     public void whenPairWithComment() {
         Config config = new Config("./data/app.properties");
         config.load();
