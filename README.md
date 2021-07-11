@@ -12,12 +12,3 @@
 + chapter_007 - SQL, JDBC
 + chapter_008 - Object-Oriented Design: SOLID, TDD, KISS, DRY, YAGNI
 + chapter_009 - Garbage Collection
-
-В курсе производилась работа с веткамы git
-3.1. Добавить изменения в последний коммит. 
-еще одно изменение через amend
-
-Добавил изменение
-
-
-После гит стеш добавил это изменение
