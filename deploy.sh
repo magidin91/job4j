@@ -1,1 +1,1 @@
- # this is deploy script
+ # deploy script
