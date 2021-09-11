@@ -12,7 +12,5 @@
 + chapter_007 - SQL, JDBC
 + chapter_008 - Object-Oriented Design: SOLID, TDD, KISS, DRY, YAGNI
 + chapter_009 - Garbage Collection
-hotfix
-hotfix
-hotfix
-hotfix
+
+12345
