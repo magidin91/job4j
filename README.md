@@ -13,4 +13,4 @@
 + chapter_008 - Object-Oriented Design: SOLID, TDD, KISS, DRY, YAGNI
 + chapter_009 - Garbage Collection
 
-Создание ветки в Idea
+Объединение зафиксированных изменений
